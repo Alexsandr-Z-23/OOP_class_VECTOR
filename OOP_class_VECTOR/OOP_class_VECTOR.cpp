@@ -95,7 +95,22 @@ void Vector<T>::insert_v(T zn, T* adr)
 
 template<class T>
 void Vector<T>::erase_v(T* adr)
-{}
+{
+	int k = 0;
+	vector_iterator temp;
+	temp = new T[--size];
+	for (vector_iterator i = vv; i < adr; i++)
+	{
+		*(temp + k++) = *i;
+	}
+	for (vector_iterator i = adr+1; i <= vv + size; i++)
+	{
+		*(temp + k++) = *i;
+	}
+	delete[] vv;  // освобождения памяти для старого вектора
+	vv = temp;		// vv указывает на новый вектор
+
+}
 
 
 void menu()
